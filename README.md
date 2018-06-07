@@ -1,5 +1,5 @@
 # Charter Enterprise MOTD Sample Project
-I have created two new Java classes or this project.
+I have created two new Java classes for this project.
 ##### MessageOfTheDay
 * Long id;
 * String msg;
