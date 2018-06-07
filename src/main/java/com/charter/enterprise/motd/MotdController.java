@@ -3,6 +3,7 @@ package com.charter.enterprise.motd;
 import com.charter.enterprise.motd.repository.MessageOfTheDay;
 import com.charter.enterprise.motd.repository.MotdRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,6 +31,10 @@ public class MotdController {
     }
 
     private MessageOfTheDay findByMsg(String msg) {
+        if(msg==null || msg.trim().isEmpty())
+        {
+            return null;
+        }
         Iterable<MessageOfTheDay> messages = motdRepository.findAll();
         MessageOfTheDay msgFoud = null;
         for (MessageOfTheDay msgd : messages) {

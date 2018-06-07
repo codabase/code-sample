@@ -23,43 +23,63 @@ The class is the main engine of the our application provides the REST service me
 ###### Find a Message By Id 
 * URL **`motds/{id}`**  
 * HTTP Method **_`GET`_**
+* Method Arguments :  (Long id)
 * Usage `using the id provided by user returns a single message. The message id must be the same as the id paased by user.
- If message with the same is not found returns null. ` 
+ If message with the same not found the metod returns null. ` 
+  * Returned Values 
+  * MessageOfTheDay object if Object with the same id found
+  * null if the id not found
 ###### Find All Messages
  * URL **`motds`** 
  * HTTP Method _**`GET`**_
+ * Method Arguments :  ()
  * Usage `Returns the collection of all messages on the severs.` 
+ * Returned Values 
+ * List<MessageOfTheDay> list of all massages 
 ###### Create Message
  * URL **`motds`** 
  * HTTP Method **_`POST`_**
+ * Method Arguments :  (String msg)
  * Usage `Creates a message on the server using the string passed by user.`
+ * Returned Values 
+ * Http Status OK           if the message created.
+ * Http Status FOUND    if the message already exist in server.
+
 ###### Update Message
-  * URL **`motd/{id}`** 
-  * HTTP Method **_`PUT`_**
-  * Usage `Find and update the message on the server using the id povided by user`
-  * arguments :  (Long id,String msg)
-  * id provided 
-  * msg provided
-  * Post Condition: The message on the server is the same as the message provided by user.
-  * If the message with the same id not found, application returns null.
+* URL **`motd/{id}`** 
+* HTTP Method **_`PUT`_**
+* Method Arguments :  (Long id, String msg)
+* Usage `Find and update the message on the server using the id povided by user`
+* id provided 
+* msg provided
+* Post Condition: The message on the server is the same as the message provided by user.
+* Returned Values 
+* Http Status OK        Message is updated.
+* Http Status NOT_FOUND Message exist on server.
 ###### Update Message
- * URL **`motd`** 
-  * HTTP Method **_`PUT`_**
-  * Usage `Find and update the message on the server using the id povided by user`
-  * arguments : (MessageOfTheDay msgOfTheDay)
-  * msgOfTheDay.id provided 
-  * msgOfTheDay.msg provided
-  * Post Condition: The message on the server is equals o the message provided by user.
-  * If the message with the same id not found, application returns null,no change to the messages on server.
-  
-  
-  
+* URL **`motd`** 
+* HTTP Method **_`PUT`_**
+* Usage `Find and update the message on the server using the id povided by user`
+* Method Arguments :  (MessageOfTheDay msgOfTheDay)
+* msgOfTheDay.id required 
+* msgOfTheDay.msg required not empty
+* Post Condition: The message on the server is equals o the message provided by user.
+* If the message with the same id not found, application returns null,no change to the messages on server.
+* Returned Values 
+* Http Status OK        Message is updated.
+* Http Status NOT_FOUND Message exist on server.
+###### Delete Message
+* URL **`motd`** 
+* HTTP Method **_`DELETE`_**
+* Usage `Find and delete the message on the server using the id povided by user`
+* Method Arguments :  (Long id)
+* Post Condition: The message on the server is equals o the message provided by user.
+* If the message with the same id not found, application returns null,no change to the messages on server.
+* Returned Values 
+* Http Status OK        Message is updated.
+* Http Status NOT_FOUND Message exist on server.
 ## Instructions
-We have provided a webservice that provides a "message of the day", similar to what you might see logging into a Unix system. Unfortuantely, at Charter things don't always go as planned and we need to change the message.  We need you to add the ability to change the message.   The message can be stored in the service using any mechanism you like, but aim for simplicity.  Something very simple, and in memory can be used.   It does not have to be durable between restarts, so please avoid writing to a file.  A persistent store like MySQL or Hypersonic could be overkill for this new requirement.  Iterative requests for the MOTD should return the new message, if it has been changed. Be sure to edit this README.md so we understand what you've done.
 
-Also, a rogue developer has left the code base broken.  To get anything done, you're doing to have to fix the tests first! And, no, -DskipTests is not a solution!
-
-Push your answer to this Github repo as a feature branch and create a pull request so we know you're done.
 
 ### Getting Started
 * To compile
