@@ -13,7 +13,7 @@ The MessageOfTheDay is an Entity Bean with two members.
 The MotdRepository is CrudRepository interface has find, create, update and delete operations. 
 The object of this class is injected by spring framework
 
-I have modified both existing classes of the project:
+I have modified the both existing classes of the project:
 ##### Motd 
 This is annotated as SpringBootApplication, the **_main_** method in this class starts the **_Motd_** server
 The init method of the method is called to initialize our repository with some data.
