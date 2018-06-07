@@ -18,11 +18,11 @@ The MessageOfTheDay is an Entity Bean with two members.
 * This class annotated as SpringBootApplication, the **_main_** method in this class starts the **_Motd_** server
 * The init method is called to initialize MotdRepository with some data.
    
-#### MotdController.java
-* This class is a center of the project. 
-* All the REST API and service of the applications are defined here.   
-### REST APIs   
-####findById(Long id)
+#### MotdController.java 
+* All the REST API and service of the applications are defined and implemented in this class.   
+
+## MotdController REST API 
+#### findById(Long id)
 * URL: **_<base_url>/motds/{id}
 * HTTP Method Type: **_`GET`_**
 * Returns a Singe message or null. 
@@ -35,7 +35,7 @@ The MessageOfTheDay is an Entity Bean with two members.
  
  * Returns the list of all messages on the severs. 
  * Returned Type 
- * List<MessageOfTheDay> list of all massages 
+    * List \\<\MessageOfTheDay>
 ##### addMsgOfTheDay(String msg)
  * URL **_<base_url>/motds_** 
  * HTTP Method Type: **_`POST`_**
