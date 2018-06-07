@@ -33,7 +33,7 @@ The object of this class is injected by spring framework
 ###### Find All Messages
  * URL: **_<base_url>/motds**_ 
  * HTTP Method Type: _**`GET`**_
- * Method:  **_finaAll()_**
+ * Method:  **_findAll()_**
  * Returns the list of all messages on the severs. 
  * Returned Type 
  * List<MessageOfTheDay> list of all massages 
