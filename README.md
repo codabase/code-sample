@@ -1,6 +1,6 @@
 # Charter Enterprise MOTD Sample Project
-I have created two new Java classes for this project.
-##### MessageOfTheDay
+I created two new Java classes for the project.
+#### MessageOfTheDay.java
 * Long id;
 * String msg;
 The MessageOfTheDay is an Entity Bean with two members.
@@ -9,19 +9,20 @@ The MessageOfTheDay is an Entity Bean with two members.
 * The no argument constructor is private to prevent user to create a blank message. It may be called internally.
 * The constructor wih String argument is used for the REST service. 
 * The method equal added to test if two messages are equal and prevent user to added duplicates.  
-##### MotdRepository
+#### MotdRepository.java
 The MotdRepository is CrudRepository interface has find, create, update and delete operations. 
 The object of this class is injected by spring framework
 
-I have modified the both existing classes of the project:
-##### Motd 
+### Existing Classes of Project:
+#### Motd.java 
 * This class annotated as SpringBootApplication, the **_main_** method in this class starts the **_Motd_** server
 * The init method is called to initialize MotdRepository with some data.
-The **_MotdRepository_** is a repository to create and maintain the Messages.   
-##### MotdController
-This class is the main engine of the application.Provides REST API and gives service to other applications to use or maintenance.   
-##### REST API Services Provided  
-###### Find a Motd By Id 
+   
+#### MotdController.java
+* This class is a center of the project. 
+* All the REST API and service of the applications are defined here.   
+### REST APIs   
+###### Find a Message By Id 
 * URL: **_<base_url>/motds/{id}_**
 * HTTP Method Type: **_`GET`_**
 * Method:  **_findById(Long id)_**
@@ -36,7 +37,7 @@ This class is the main engine of the application.Provides REST API and gives ser
  * Returns the list of all messages on the severs. 
  * Returned Type 
  * List<MessageOfTheDay> list of all massages 
-###### Create Message
+###### Create a Message
  * URL **_<base_url>/motds_** 
  * HTTP Method Type: **_`POST`_**
  * Method  :  **_addMsg(String msg)_**
@@ -45,7 +46,7 @@ This class is the main engine of the application.Provides REST API and gives ser
  * OK       if the message created.
  * FOUND    if a msg with the same content is found. No messae is created in this case.
 
-###### Update Message
+###### Update a Message by passing a message as String
 * URL: **_<base_url>motd/{id}_**
 * HTTP Method **_`PUT`_**
 * Method:**_updateMsg(Long id, String msg)_**
@@ -53,7 +54,7 @@ This class is the main engine of the application.Provides REST API and gives ser
 * Returned Http Status Code
 * OK Message is updated.
 * NOT_FOUND id not found.
-###### Update Message
+###### Update Message by passing it as MessageOfTheDay object 
 * URL: **_<base_url>/motd_** 
 * HTTP Method **_`PUT`_**
 * Find and update the message on the server using the id provided by user`
@@ -66,7 +67,7 @@ This class is the main engine of the application.Provides REST API and gives ser
 * OK        Message is updated.
 * NOT_FOUND id not found.
 ###### Delete Message
-* URL **_<base_url>/motds** 
+* URL **_<base_url>/motds_** 
 * HTTP Method **_DELETE_**
 * Find and delete the message on the server using the id povided by user`
 * Method:  deleteMsgBId(Long rid)
@@ -75,13 +76,13 @@ This class is the main engine of the application.Provides REST API and gives ser
 * OK        The Message id=rid is deleted.
 * NOT_FOUND message with id=rid not found.
 ###### Delete All Message
-* URL **<base_url>/motds** 
+* URL **_<base_url>/motds_** 
 * HTTP Method **_DELETE_**
 * Find and delete all the message on the server
 * Method Arguments :  deleteAll()
 * Post Condition: No message left on the server  .
 * Returned Http Status 
-* OK    No Message exist on server.
+* OK  
 ## Instructions
 
 
