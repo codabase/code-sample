@@ -8,7 +8,7 @@ The MessageOfTheDay is an Entity Bean with two members.
 * msg is the Message of the Day and is the only data in this class.
 * The no argument constructor is private to prevent user to create a blank message. It may be called internally.
 * The constructor wih String argument is used for the REST service. 
-* The method equal added to test if two messages are equal and prevent user to added duplicates.  
+* The method equal added to test if two messages are equal and prevent user to add duplicates.  
 #### MotdRepository.java
 * The MotdRepository extending Spring CrudRepository interface.
 * The interface provides all crud method find, create, update, delete plus more and injected by spring framework
