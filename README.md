@@ -32,7 +32,6 @@ The MessageOfTheDay is an Entity Bean with two members.
 #### findAll() 
  * URL: **_<base_url>/motds**_ 
  * HTTP Method Type: _**`GET`**_
- 
  * Returns the list of all messages on the severs. 
  * Returned Type 
     * List \\<\MessageOfTheDay>
