@@ -1,22 +1,21 @@
 # Charter Enterprise MOTD Sample Project
-In this project we have created two new Java classes:
+I have created two new Java classes or this project.
 ##### MessageOfTheDay
 * Long id;
 * String msg;
-##### MotdRepository
-
 The MessageOfTheDay is an Entity Bean with two members.
 * id is Primary Key and is generated.
 * msg is the Message of the Day and is the only data in this class.
-* The no argument constructor is private to prevent user to create a blank message.It may be called internally.
-* The constructor wih String argument is used for REST service 
-* The other method is equal method. Added to test if two message are equal and prevent user to added duplicates.  
+* The no argument constructor is private to prevent user to create a blank message. It may be called internally.
+* The constructor wih String argument is used for the REST service. 
+* The method equal added to test if two messages are equal and prevent user to added duplicates.  
+##### MotdRepository
+The MotdRepository is CrudRepository interface has find, create, update and delete operations. 
+The object of this class is injected by spring framework
 
-The MotdRepository is CrudRepository interface with normal Find, Create, Update and Delete operations. The object is injected by spring framework
-
-The two existing classes in this project are:
-##### Motd
-The **_main_** method in this ****class is called by SpringBoot to start the **_Message of the Day_** Application 
+I have modified both existing classes of the project:
+##### Motd 
+This is annotated as SpringBootApplication, the **_main_** method in this class starts the **_Motd_** server
 The init method of the method is called to initialize our repository with some data.
 The **_motdRepository_** is our repository to create and maintain the Messages.   
 ##### MotdController
