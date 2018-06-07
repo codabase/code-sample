@@ -19,15 +19,15 @@ public class Motd {
     }
 
     @Autowired
-    private MotdRepository modtsRepository;
+    private MotdRepository motdRepository;
 
 
     @PostConstruct
     public void init() {
         List<MessageOfTheDay> motdsList = new ArrayList<>();
-        motdsList.add(new MessageOfTheDay("Message for day one"));
-        motdsList.add(new MessageOfTheDay("The second day message"));
-        modtsRepository.save(motdsList);
+        motdsList.add(new MessageOfTheDay("Message of the day: 1"));
+        motdsList.add(new MessageOfTheDay("Message of the day: 2"));
+        motdRepository.save(motdsList);
     }
 }
 

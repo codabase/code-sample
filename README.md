@@ -1,10 +1,12 @@
 # Charter Enterprise MOTD Sample Project
 In this project we have created two new Java classes:
 ##### MessageOfTheDay
+* Long id;
+* String msg;
 ##### MotdRepository
 
-The MessageOfTheDay is an Entity Bean with two attributes.
-* id is Primary and is generated in sequence.
+The MessageOfTheDay is an Entity Bean with two members.
+* id is Primary Key and is generated.
 * msg is the Message of the Day and is the only data in this class.
 * The no argument constructor is private to prevent user to create a blank message.It may be called internally.
 * The constructor wih String argument is used for REST service 
@@ -42,8 +44,8 @@ The class is the main engine of the our application provides the REST service me
  * Method Arguments :  (String msg)
  * Usage `Creates a message on the server using the string passed by user.`
  * Returned Values 
- * Http Status OK           if the message created.
- * Http Status FOUND    if the message already exist in server.
+ * Http Status OK       if the message created.
+ * Http Status FOUND    id found.
 
 ###### Update Message
 * URL **`motd/{id}`** 
@@ -55,7 +57,7 @@ The class is the main engine of the our application provides the REST service me
 * Post Condition: The message on the server is the same as the message provided by user.
 * Returned Values 
 * Http Status OK        Message is updated.
-* Http Status NOT_FOUND Message exist on server.
+* Http Status NOT_FOUND id not found.
 ###### Update Message
 * URL **`motd`** 
 * HTTP Method **_`PUT`_**
@@ -67,13 +69,22 @@ The class is the main engine of the our application provides the REST service me
 * If the message with the same id not found, application returns null,no change to the messages on server.
 * Returned Values 
 * Http Status OK        Message is updated.
-* Http Status NOT_FOUND Message exist on server.
+* Http Status NOT_FOUND id not found.
 ###### Delete Message
-* URL **`motd`** 
+* URL **`motds`** 
 * HTTP Method **_`DELETE`_**
 * Usage `Find and delete the message on the server using the id povided by user`
-* Method Arguments :  (Long id)
-* Post Condition: The message on the server is equals o the message provided by user.
+* Method Arguments :  (Long rid)
+* Post Condition: The message with id=rid on is deleted from server.
+* Returned Values 
+* Http Status OK        Message is deleted.
+* Http Status NOT_FOUND Message exist on server.
+###### Delete All Message
+* URL **`motds`** 
+* HTTP Method **_`DELETE`_**
+* Usage `Find and delete all the message on the server`
+* Method Arguments :  ()
+* Post Condition: All messages on the server is .
 * If the message with the same id not found, application returns null,no change to the messages on server.
 * Returned Values 
 * Http Status OK        Message is updated.
