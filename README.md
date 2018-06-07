@@ -19,75 +19,69 @@ I have modified the both existing classes of the project:
 * The init method is called to initialize MotdRepository with some data.
 The **_MotdRepository_** is a repository to create and maintain the Messages.   
 ##### MotdController
-The class is the main engine of the our application provides the REST service method to other application to use or maintain the messages.   
-##### REST API  
-###### Find a Message By Id 
-* URL **`motds/{id}`**  
-* HTTP Method **_`GET`_**
-* Method Arguments :  (Long id)
-* Usage `using the id provided by user returns a single message. The message id must be the same as the id paased by user.
- If message with the same not found the metod returns null. ` 
-  * Returned Values 
-  * MessageOfTheDay object if Object with the same id found
-  * null if the id not found
+This class is the main engine of the application.Provides REST API and gives service to other applications to use or maintenance.   
+##### REST API Services Provided  
+###### Find a Motd By Id 
+* URL: **_<base_url>/motds/{id}_**
+* HTTP Method Type: **_`GET`_**
+* Method:  **_findById(Long id)_**
+* Returns a Singe message or null. The message returned has the same id as the id passed by user.
+  * Returned Types
+  * **_MessageOfTheDay_** An instance of this class returned if message found   
+  * **_null_** is returned if the id not found
 ###### Find All Messages
- * URL **`motds`** 
- * HTTP Method _**`GET`**_
- * Method Arguments :  ()
- * Usage `Returns the collection of all messages on the severs.` 
- * Returned Values 
+ * URL: **_<base_url>/motds**_ 
+ * HTTP Method Type: _**`GET`**_
+ * Method:  **_finaAll()_**
+ * Returns the list of all messages on the severs. 
+ * Returned Type 
  * List<MessageOfTheDay> list of all massages 
 ###### Create Message
- * URL **`motds`** 
- * HTTP Method **_`POST`_**
- * Method Arguments :  (String msg)
- * Usage `Creates a message on the server using the string passed by user.`
- * Returned Values 
- * Http Status OK       if the message created.
- * Http Status FOUND    id found.
+ * URL **_<base_url>/motds_** 
+ * HTTP Method Type: **_`POST`_**
+ * Method  :  **_addMsg(String msg)_**
+ * Creates a message on the server using the same string passed by user.
+ * Returned Http Status Code 
+ * OK       if the message created.
+ * FOUND    if a msg with the same content is found. No messae is created in this case.
 
 ###### Update Message
-* URL **`motd/{id}`** 
+* URL: **_<base_url>motd/{id}_**
 * HTTP Method **_`PUT`_**
-* Method Arguments :  (Long id, String msg)
-* Usage `Find and update the message on the server using the id povided by user`
-* id provided 
-* msg provided
-* Post Condition: The message on the server is the same as the message provided by user.
-* Returned Values 
-* Http Status OK        Message is updated.
-* Http Status NOT_FOUND id not found.
+* Method:**_updateMsg(Long id, String msg)_**
+* Find and update the message on the server using the id provided by user
+* Returned Http Status Code
+* OK Message is updated.
+* NOT_FOUND id not found.
 ###### Update Message
-* URL **`motd`** 
+* URL: **_<base_url>/motd_** 
 * HTTP Method **_`PUT`_**
-* Usage `Find and update the message on the server using the id povided by user`
-* Method Arguments :  (MessageOfTheDay msgOfTheDay)
+* Find and update the message on the server using the id provided by user`
+* Method:  (MessageOfTheDay msgOfTheDay)
 * msgOfTheDay.id required 
 * msgOfTheDay.msg required not empty
 * Post Condition: The message on the server is equals o the message provided by user.
 * If the message with the same id not found, application returns null,no change to the messages on server.
-* Returned Values 
-* Http Status OK        Message is updated.
-* Http Status NOT_FOUND id not found.
+* Returned Http Status 
+* OK        Message is updated.
+* NOT_FOUND id not found.
 ###### Delete Message
-* URL **`motds`** 
-* HTTP Method **_`DELETE`_**
-* Usage `Find and delete the message on the server using the id povided by user`
-* Method Arguments :  (Long rid)
+* URL **_<base_url>/motds** 
+* HTTP Method **_DELETE_**
+* Find and delete the message on the server using the id povided by user`
+* Method:  deleteMsgBId(Long rid)
 * Post Condition: The message with id=rid on is deleted from server.
-* Returned Values 
-* Http Status OK        Message is deleted.
-* Http Status NOT_FOUND Message exist on server.
+* Returned Http Status 
+* OK        The Message id=rid is deleted.
+* NOT_FOUND message with id=rid not found.
 ###### Delete All Message
-* URL **`motds`** 
-* HTTP Method **_`DELETE`_**
-* Usage `Find and delete all the message on the server`
-* Method Arguments :  ()
-* Post Condition: All messages on the server is .
-* If the message with the same id not found, application returns null,no change to the messages on server.
-* Returned Values 
-* Http Status OK        Message is updated.
-* Http Status NOT_FOUND Message exist on server.
+* URL **<base_url>/motds** 
+* HTTP Method **_DELETE_**
+* Find and delete all the message on the server
+* Method Arguments :  deleteAll()
+* Post Condition: No message left on the server  .
+* Returned Http Status 
+* OK    No Message exist on server.
 ## Instructions
 
 
