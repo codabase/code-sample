@@ -10,8 +10,8 @@ The MessageOfTheDay is an Entity Bean with two members.
 * The constructor wih String argument is used for the REST service. 
 * The method equal added to test if two messages are equal and prevent user to added duplicates.  
 #### MotdRepository.java
-The MotdRepository is CrudRepository interface has find, create, update and delete operations. 
-The object of this class is injected by spring framework
+* The MotdRepository extending Spring CrudRepository interface.
+* The interface provides all crud method find, create, update, delete plus more and injected by spring framework
 
 ### Existing Classes of Project:
 #### Motd.java 
@@ -22,67 +22,55 @@ The object of this class is injected by spring framework
 * This class is a center of the project. 
 * All the REST API and service of the applications are defined here.   
 ### REST APIs   
-###### Find a Message By Id 
-* URL: **_<base_url>/motds/{id}_**
+####findById(Long id)
+* URL: **_<base_url>/motds/{id}
 * HTTP Method Type: **_`GET`_**
-* Method:  **_findById(Long id)_**
-* Returns a Singe message or null. The message returned has the same id as the id passed by user.
-  * Returned Types
-  * **_MessageOfTheDay_** An instance of this class returned if message found   
-  * **_null_** is returned if the id not found
-###### Find All Messages
+* Returns a Singe message or null. 
+  * Method Return
+  * **_MessageOfTheDay_** if id is found   
+  * **_null_** if the id not found
+#### findAll() 
  * URL: **_<base_url>/motds**_ 
  * HTTP Method Type: _**`GET`**_
- * Method:  **_findAll()_**
+ 
  * Returns the list of all messages on the severs. 
  * Returned Type 
  * List<MessageOfTheDay> list of all massages 
-###### Create a Message
+##### addMsgOfTheDay(String msg)
  * URL **_<base_url>/motds_** 
  * HTTP Method Type: **_`POST`_**
- * Method  :  **_addMsg(String msg)_**
  * Creates a message on the server using the same string passed by user.
  * Returned Http Status Code 
- * OK       if the message created.
- * FOUND    if a msg with the same content is found. No messae is created in this case.
+    * OK      
+    * FOUND    
 
-###### Update a Message by passing a message as String
+##### updateMsg(Long id, String msg)
 * URL: **_<base_url>motd/{id}_**
 * HTTP Method **_`PUT`_**
-* Method:**_updateMsg(Long id, String msg)_**
 * Find and update the message on the server using the id provided by user
 * Returned Http Status Code
-* OK Message is updated.
-* NOT_FOUND id not found.
-###### Update Message by passing it as MessageOfTheDay object 
+    * OK 
+    * NOT_FOUND 
+##### update(MessageOfTheDay msgOfTheDay) 
 * URL: **_<base_url>/motd_** 
 * HTTP Method **_`PUT`_**
-* Find and update the message on the server using the id provided by user`
-* Method:  (MessageOfTheDay msgOfTheDay)
-* msgOfTheDay.id required 
-* msgOfTheDay.msg required not empty
-* Post Condition: The message on the server is equals o the message provided by user.
-* If the message with the same id not found, application returns null,no change to the messages on server.
+* Updates message if the id is found.
 * Returned Http Status 
-* OK        Message is updated.
-* NOT_FOUND id not found.
-###### Delete Message
+    *  OK        
+    * NOT_FOUND 
+#####deleteMsgBId(Long rid)
 * URL **_<base_url>/motds_** 
 * HTTP Method **_DELETE_**
-* Find and delete the message on the server using the id povided by user`
-* Method:  deleteMsgBId(Long rid)
-* Post Condition: The message with id=rid on is deleted from server.
+* Deletes a Single message
 * Returned Http Status 
-* OK        The Message id=rid is deleted.
-* NOT_FOUND message with id=rid not found.
-###### Delete All Message
+    * OK     
+    * NOT_FOUND 
+##### deleteAll()
 * URL **_<base_url>/motds_** 
 * HTTP Method **_DELETE_**
-* Find and delete all the message on the server
-* Method Arguments :  deleteAll()
-* Post Condition: No message left on the server  .
+* Delete all the message on the server  
 * Returned Http Status 
-* OK  
+    *  OK  
 ## Instructions
 
 
