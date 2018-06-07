@@ -25,8 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class MotdControllerTest {
-    @Autowired
-    private MotdRepository motdRepository;
+
     @Autowired
     private WebApplicationContext context;
     private MockMvc mockMvc;
@@ -48,11 +47,21 @@ public class MotdControllerTest {
     }
 
     @Test
-    public void Motd() throws Exception {
+    public void motd() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/motds"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(Matcher.quoteReplacement("[{\"id\":1,\"msg\":\"Message for day one\"},{\"id\":2,\"msg\":\"The second day message\"}]")));
                 //.andExpect(content().string(Matcher.quoteReplacement("The second day message")));
               //  .andExpect(content().string(equalTo("[{\"id\":1,\"msg\":\"Msg of the Day one\"},{\"id\":2,\"msg\":\"Msg of the Day two\"}")));
     }
+
+    @Test
+    public void delete() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/motds/1"))
+                .andExpect(status().isOk());
+        mockMvc.perform(MockMvcRequestBuilders.get("/motds/1"))
+                .andExpect(status().isNotFound());
+    }
+
+
 }

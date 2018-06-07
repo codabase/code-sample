@@ -10,31 +10,29 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class MotdController {
 
+    @Autowired
+    private MotdRepository motdRepository;
+
     @GetMapping
     public String getMotd() {
         return "Welcome to Charter.  All systems are nominal.";
     }
 
-    private MotdRepository motdRepository;
-
-
     @GetMapping("/motds/{id}")
-    public MessageOfTheDay getMotd(@PathVariable Long id){
+    public MessageOfTheDay getMotd(@PathVariable Long id) {
         return motdRepository.findOne(id);
     }
 
 
     @GetMapping("/motds")
-    public Iterable<MessageOfTheDay> getMotds(){
+    public Iterable<MessageOfTheDay> getMotds() {
         return motdRepository.findAll();
     }
 
-    private MessageOfTheDay findByMsg(String msg)
-    {
+    private MessageOfTheDay findByMsg(String msg) {
         Iterable<MessageOfTheDay> messages = motdRepository.findAll();
         MessageOfTheDay msgFoud = null;
-        for (MessageOfTheDay msgd:messages)
-        {
+        for (MessageOfTheDay msgd : messages) {
             if (msgd.getMsg().equals(msg)) {
                 msgFoud = msgd;
                 break;
@@ -47,22 +45,20 @@ public class MotdController {
     @PostMapping("/motds")
     public HttpStatus addMember(@RequestBody String message) {
         MessageOfTheDay msgFound = findByMsg(message);
-        if (msgFound==null) {
+        if (msgFound == null) {
             motdRepository.save(new MessageOfTheDay(message));
             return HttpStatus.OK;
-        } else
-        {
+        } else {
             return HttpStatus.FOUND;
         }
     }
 
     @PutMapping("/motd/{id}")
-    public HttpStatus updateStringMotd(@PathVariable Long id, @RequestBody String msg){
+    public HttpStatus updateStringMotd(@PathVariable Long id, @RequestBody String msg) {
         MessageOfTheDay messageOfTheDay = motdRepository.findOne(id);
-        if (messageOfTheDay==null) {
+        if (messageOfTheDay == null) {
             return HttpStatus.NOT_FOUND;
-        } else
-        {
+        } else {
             messageOfTheDay.setMsg(msg);
             motdRepository.save(messageOfTheDay);
             return HttpStatus.OK;
@@ -70,25 +66,21 @@ public class MotdController {
     }
 
     @PutMapping("/motd")
-    public HttpStatus updateMotd(@RequestBody MessageOfTheDay msgOfTheDay){
-        if (motdRepository.exists(msgOfTheDay.getId()))
-        {
+    public HttpStatus updateMotd(@RequestBody MessageOfTheDay msgOfTheDay) {
+        if (motdRepository.exists(msgOfTheDay.getId())) {
             motdRepository.save(msgOfTheDay);
             return HttpStatus.OK;
-        } else
-        {
+        } else {
             return HttpStatus.NOT_FOUND;
         }
     }
 
-    @DeleteMapping("/motd/{id}")
-    public HttpStatus deleteMotd(@PathVariable Long id){
-        if (motdRepository.exists(id))
-        {
+    @DeleteMapping("/motds/{id}")
+    public HttpStatus deleteMotd(@PathVariable Long id) {
+        if (motdRepository.exists(id)) {
             motdRepository.delete(id);
             return HttpStatus.OK;
-        } else
-        {
+        } else {
             return HttpStatus.NOT_FOUND;
         }
     }

@@ -18,6 +18,7 @@ public class Motd {
         SpringApplication.run(Motd.class, args);
     }
 
+    @Autowired
     private MotdRepository modtsRepository;
 
 
