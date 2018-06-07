@@ -58,7 +58,7 @@ The MessageOfTheDay is an Entity Bean with two members.
 * Returned Http Status 
     *  OK        
     * NOT_FOUND 
-#####deleteMsgBId(Long rid)
+##### deleteMsgBId(Long rid)
 * URL **_<base_url>/motds_** 
 * HTTP Method **_DELETE_**
 * Deletes a Single message
