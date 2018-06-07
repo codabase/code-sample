@@ -15,9 +15,9 @@ The object of this class is injected by spring framework
 
 I have modified the both existing classes of the project:
 ##### Motd 
-This is annotated as SpringBootApplication, the **_main_** method in this class starts the **_Motd_** server
-The init method of the method is called to initialize our repository with some data.
-The **_motdRepository_** is our repository to create and maintain the Messages.   
+* This class annotated as SpringBootApplication, the **_main_** method in this class starts the **_Motd_** server
+* The init method is called to initialize MotdRepository with some data.
+The **_MotdRepository_** is a repository to create and maintain the Messages.   
 ##### MotdController
 The class is the main engine of the our application provides the REST service method to other application to use or maintain the messages.   
 ##### REST API  
